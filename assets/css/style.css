@@ -1,3 +1,8 @@
-.red {
-    color: red;
+.title-screen {
+    font-size: 1rem;
+    background-color: violet;
+    margin: 1rem 5rem;
+}
+.hidden {
+    display: none;
 }
