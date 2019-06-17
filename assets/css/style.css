@@ -7,10 +7,16 @@
     display: none;
     height: 0;
     overflow: hidden;
-    transition: height 500ms ease-in-out;
 }
 
-.instructions {
-    display: block;
-    height: auto;
+
+a {
+    text-decoration: none;
+}
+
+.category-image {
+    height: 100px;
+    width: 100px;
+    border: 0px solid black;
+    border-radius: 50%;
 }

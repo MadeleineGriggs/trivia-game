@@ -6,14 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <title>Trivia Game!</title>
+    <title>Trivia SuperStars</title>
 </head>
 <body>
     <p class="red">Hello World!</p>
 
     <div class="title-screen">
-        <p>Trivia Time!</p>
-        <p> Pick your Category</p>
+        <h1>Trivia Time!</h1>
+        <h2> Pick your Category</h2>
+        <p></p>
+        <a href="#" id="category-1">
+                <img class="category-image" src="assets/images/yellowFlowers.jpg"/>
+            </a>
+        <a href="#" id="category-2">
+                <img class="category-image" src="assets/images/catMeow.jpg"/>
+            </a>
+        <a href="#" id="category-3">
+                <img class="category-image" src="assets/images/cellphone.jpg"/>
+            </a>
         <button id="start-game">Start Game!</button>
         <button id="how-to-play">How to Play</button>
     <div class="instructions hidden">
@@ -24,13 +34,14 @@
 
     <div class="game-container hidden">
         <div class="timer-container">Let's Start!</div>
+        <div class="category-container">Your Category is: </div>
         <div class="question-container"></div>
         <div class="answers-container">
             <ul>
-                <li><button id="ans-1">Answer 1</button></li>
-                <li><button id="ans-2">Answer 2</button></li>
-                <li><button>Answer 3</button></li>
-                <li><button>Answer 4</button></li>
+                <li id ="ans-1-text"><button id="ans-1">Answer 1</button></li>
+                <li id ="ans-1-text"><button id="ans-2">Answer 2</button></li>
+                <li id ="ans-1-text"><button>Answer 3</button></li>
+                <li id ="ans-1-text"><button>Answer 4</button></li>
             </ul>
         </div>
     </div>

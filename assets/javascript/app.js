@@ -1,3 +1,28 @@
+var TriviaCategories = [
+    {"category": "Cats",
+        "questions": {
+            "question1": "How many legs do cats walk on?",
+            "answers": {
+                "wrongAnswer1": "Cats walk on 16 legs",
+                "wrongAnswer2": "Cats walk on 3 legs",
+                "wrongAnswer3": "Cats walk on 3 legs",
+                "correctAnswer": "Cats walk on 4 legs, duh."
+            }
+        }
+},
+    {"category": "Dogs",
+        "questions": {
+            "question1": "How many legs do dogs walk on?",
+            "answers": {
+                "wrongAnswer1": "Dogs walk on 16 legs",
+                "wrongAnswer2": "Dogs walk on 3 legs",
+                "wrongAnswer3": "Dogs walk on 3 legs",
+                "correctAnswer": "Dogs walk on 4 legs, duh."
+            }
+        }
+    }
+]
+
 
 $(document).ready(function() {
 
@@ -15,11 +40,32 @@ $(document).ready(function() {
         $("#how-to-play").click(function() {
         $(".instructions").toggleClass("hidden");
         })
-        $("#start-game").click(function() {
-        $(".title-screen").attr("class", "hidden");
-        $(".game-container").toggleClass("hidden");
-        triviaDisplay();
-        });
+        $("#category-1").click(function() {
+            gameCategory = "";
+            gameCategory = "cats";
+
+        })
+        $("#category-2").click(function() {
+            gameCategory = "";
+            gameCategory = "dogs";
+
+        })
+        $("#category-3").click(function() {
+            gameCategory = "";
+            gameCategory = "other";
+
+        })
+        
+            $("#start-game").click(function() {
+                if (gameCategory !== "") {
+                $(".title-screen").attr("class", "hidden");
+                $(".game-container").toggleClass("hidden");
+                triviaDisplay();
+                }   else if (gameCategory === "") {
+                console.log("You need to pick a category to begin.");
+                }
+            });
+
     }
 
     function gameTimer(i) {
@@ -37,9 +83,14 @@ $(document).ready(function() {
 
     function triviaDisplay() {
         gameTimer();
-        $(".question-container").text("Question here please!");
-        $("#ans-1").text("changing the answers");
+        var question = TriviaCategories[0]["questions"]["question1"];
+        var category = TriviaCategories.length;
+        var answer1 = TriviaCategories[0]["questions"]["answers"]["wrongAnswer1"];
+        $(".question-container").text(question);
+        $("#ans-1-text").text(answer1);
     }
+
+
 
 
 
