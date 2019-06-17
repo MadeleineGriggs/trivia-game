@@ -11,18 +11,28 @@
 <body>
     <p class="red">Hello World!</p>
 
-    <div class="game-container">
-        <div class="title-screen">
-            <p>Trivia Time!</p>
-            <p> Pick your Category</p>
-            <button id="start-game">Start Game!</button>
-            <button id="how-to-play">How to Play</button>
-        <div class="instructions hidden">
-            <p>Here are the instructions to play the game</p>
-            <p> instructions etc. here.</p>
-        </div>
-        </div>
+    <div class="title-screen">
+        <p>Trivia Time!</p>
+        <p> Pick your Category</p>
+        <button id="start-game">Start Game!</button>
+        <button id="how-to-play">How to Play</button>
+    <div class="instructions hidden">
+        <p>Here are the instructions to play the game</p>
+        <p> instructions etc. here.</p>
+    </div>
+</div>
 
+    <div class="game-container hidden">
+        <div class="timer-container">Let's Start!</div>
+        <div class="question-container"></div>
+        <div class="answers-container">
+            <ul>
+                <li><button id="ans-1">Answer 1</button></li>
+                <li><button id="ans-2">Answer 2</button></li>
+                <li><button>Answer 3</button></li>
+                <li><button>Answer 4</button></li>
+            </ul>
+        </div>
     </div>
 
 <!-- Javascript and JQuery links -->

@@ -17,14 +17,29 @@ $(document).ready(function() {
         })
         $("#start-game").click(function() {
         $(".title-screen").attr("class", "hidden");
-        gameTimer();
+        $(".game-container").toggleClass("hidden");
+        triviaDisplay();
         });
     }
 
-    function gameTimer() {
-
+    function gameTimer(i) {
+        var sec= 15;
+        var timer = setInterval(function() {
+            $(".timer-container").text("You have " + sec + " seconds left!");
+            sec--;
+            if (sec == -1) {
+                $(".timer-container").text("Time's Up!!!");
+                clearInterval(timer);
+                triviaDisplay();
+            }
+        }, 1000);
     }
 
+    function triviaDisplay() {
+        gameTimer();
+        $(".question-container").text("Question here please!");
+        $("#ans-1").text("changing the answers");
+    }
 
 
 
