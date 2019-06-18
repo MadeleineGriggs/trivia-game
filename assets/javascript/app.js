@@ -88,7 +88,9 @@ var TriviaCategories = [
 
 $(document).ready(function() {
 
+
     // Variables that are accessed by multiple functions.
+    // var displayName = "";
     var gameCategory = "";
     var questionIndex = 0;
     var wins = 0;
@@ -98,6 +100,16 @@ $(document).ready(function() {
     lastQuestion = false;
     var categoryIndex = 0;
 
+    // displayName = localStorage.getItem("name");
+    // console.log(displayName);
+    // if (displayName === "null") {
+    // var userName = prompt("Hey you! What's your name?", "John Doe");
+    // localStorage.setItem("name", userName);
+    // displayName = localStorage.getItem("name");
+    // } 
+    
+    // $("#user-custom").text("Welcome back, " + displayName);
+    
         //Hides the how to play section unless the player clicks on the "How To play" button.
         $("#how-to-play").click(function() {
         $(".instructions").toggleClass("hidden");
@@ -131,9 +143,11 @@ $(document).ready(function() {
             }
         });
 
-
+    // The timer for each question in the quiz. If the user clicks an answer, it pauses the time and shows the correct answer.
+    // If the user runs out of time before selecting and answer, add to the losses counter and shows the correct answer.
+    // If the question is the last one of the quiz, pause the timer.
     function gameTimer() {
-        var sec= 5;
+        var sec= 15;
         var timer = setInterval(function() {
             $(".timer-container").text("You have " + sec + " seconds left!");
             sec--;
@@ -145,6 +159,7 @@ $(document).ready(function() {
                 showAnswer();
                 answerClicked = false;
             } else if (sec == -1) {
+                losses ++
                 $(".timer-container").text("Time's Up!!!");
                 $(".show-correct-answer").html("You ran out of time! The answer is " + correctAnswer);
                 disableButtons();
@@ -219,6 +234,7 @@ $(document).ready(function() {
         $("#ans-4-text").text(answerArray[3]);
     }
 
+    // After the user has selected an answer, the buttons are disabled so they cannot click on a different option.
     function disableButtons() {
         $("#ans-1-text").attr('disabled','disabled');
         $("#ans-2-text").attr('disabled','disabled');
@@ -226,6 +242,7 @@ $(document).ready(function() {
         $("#ans-4-text").attr('disabled','disabled');
     }
 
+    //When the trivia game moves to the next question, the buttons are reenabled so the user can click.
     function enableButtons() {
         $("#ans-1-text").removeAttr('disabled');
         $("#ans-2-text").removeAttr('disabled');
@@ -262,13 +279,14 @@ $(document).ready(function() {
     }
     
 
+    // When the user clicks the restart game on the quiz over screen, it clears out any stored values, hides the quiz over screen, and makes the title screen visible.
     $("#restart-game").click(function() {
         clearout();
         $(".quiz-over-container").toggleClass("hidden");
         $(".title-screen").attr("class", "title-screen");
         })
 
-
+    // Clears out values that need to be reused by the next quiz.
     function clearout() {
         gameCategory = "";
         questionIndex = 0;
