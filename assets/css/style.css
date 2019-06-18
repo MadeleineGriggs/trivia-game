@@ -3,6 +3,11 @@
     background-color: violet;
     margin: 1rem 5rem;
 }
+
+.quiz-over-container {
+    background-color: aliceblue;
+    margin: 1rem 5rem;
+}
 .hidden {
     display: none;
     height: 0;

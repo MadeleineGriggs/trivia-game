@@ -2,22 +2,37 @@ var TriviaCategories = [
     {"category": "Cats",
         "questions": {
             "question1": "How many legs do cats walk on?",
-            "answers": {
+            "answers1": {
                 "wrongAnswer1": "Cats walk on 16 legs",
                 "wrongAnswer2": "Cats walk on 3 legs",
                 "wrongAnswer3": "Cats walk on 3 legs",
                 "correctAnswer": "Cats walk on 4 legs, duh."
+            },
+            "question2": "How many heads to cats have?",
+            "answers2": {
+                "wrongAnswer1": "Cats have 16 heads",
+                "wrongAnswer2": "Cats have 2 heads",
+                "wrongAnswer3": "Cats have 4 heads",
+                "correctAnswer": "Cats have 1 head, duh."
             }
         }
-},
+    }
+,
     {"category": "Dogs",
         "questions": {
             "question1": "How many legs do dogs walk on?",
-            "answers": {
+            "answers1": {
                 "wrongAnswer1": "Dogs walk on 16 legs",
                 "wrongAnswer2": "Dogs walk on 3 legs",
                 "wrongAnswer3": "Dogs walk on 3 legs",
                 "correctAnswer": "Dogs walk on 4 legs, duh."
+            },
+            "question2": "How many heads to dogs have?",
+            "answers2": {
+                "wrongAnswer1": "Dogs have 16 heads",
+                "wrongAnswer2": "Dogs have 2 heads",
+                "wrongAnswer3": "Dogs have 4 heads",
+                "correctAnswer": "Dogs have 1 head, duh."
             }
         }
     }
@@ -27,8 +42,11 @@ var TriviaCategories = [
 $(document).ready(function() {
 
     var gameCategory = "";
+    var questionIndex = 1;
     var wins = 0;
     var losses = 0;
+    var correctAnswer = "";
+    answerClicked = false;
 
     gameStart();
 
@@ -55,9 +73,10 @@ $(document).ready(function() {
         
             $("#start-game").click(function() {
                 if (gameCategory !== "") {
-                $(".title-screen").attr("class", "hidden");
+                $(".title-screen").attr("class", "title-screen hidden");
                 $(".game-container").toggleClass("hidden");
                 triviaDisplay();
+                gameTimer();
                 }   else if (gameCategory === "") {
                 console.log("You need to pick a category to begin.");
                 }
@@ -70,7 +89,11 @@ $(document).ready(function() {
         var timer = setInterval(function() {
             $(".timer-container").text("You have " + sec + " seconds left!");
             sec--;
-            if (sec == -1) {
+            if (answerClicked === true) {
+                clearInterval(timer);
+                triviaDisplay();
+                answerClicked = false;
+            } else if (sec == -1) {
                 $(".timer-container").text("Time's Up!!!");
                 clearInterval(timer);
                 triviaDisplay();
@@ -87,7 +110,6 @@ $(document).ready(function() {
     }
 
     function triviaDisplay() {
-        gameTimer();
         var categoryIndex = 0;
         if(gameCategory === "cats") {
             categoryIndex = 0;
@@ -96,15 +118,29 @@ $(document).ready(function() {
         } else if (gameCategory === "other") {
             categoryIndex = 2;
         }
-        var question = TriviaCategories[categoryIndex]["questions"]["question1"];
+        var questionLength = Object.keys(TriviaCategories[categoryIndex]["questions"]).length /2;
+        console.log("question Length is: " + questionLength);
+
+        if (questionIndex <= questionLength) {    
+            populateAnswers(categoryIndex);
+            questionIndex ++;
+        } else if (questionIndex > questionLength) {
+            quizOver();
+        }
+    }
+
+    function populateAnswers(categoryIndex) {
+        var currentQuestion = "question" + questionIndex;
+        var currentAnswers = "answers" + questionIndex;
+        var question = TriviaCategories[categoryIndex]["questions"][currentQuestion];
         var answerArray = [];
-        var answer1 = TriviaCategories[categoryIndex]["questions"]["answers"]["wrongAnswer1"];
-        var answer2 = TriviaCategories[categoryIndex]["questions"]["answers"]["wrongAnswer2"];
-        var answer3 = TriviaCategories[categoryIndex]["questions"]["answers"]["wrongAnswer3"];
-        var answer4 = TriviaCategories[categoryIndex]["questions"]["answers"]["correctAnswer"];
+        var answer1 = TriviaCategories[categoryIndex]["questions"][currentAnswers]["wrongAnswer1"];
+        var answer2 = TriviaCategories[categoryIndex]["questions"][currentAnswers]["wrongAnswer2"];
+        var answer3 = TriviaCategories[categoryIndex]["questions"][currentAnswers]["wrongAnswer3"];
+        var answer4 = TriviaCategories[categoryIndex]["questions"][currentAnswers]["correctAnswer"];
+        correctAnswer = answer4;
         answerArray.push(answer1, answer2, answer3, answer4);
         shuffle(answerArray);
-        console.log(answerArray);
         $(".question-container").text(question);
         $("#ans-1-text").text(answerArray[0]);
         $("#ans-2-text").text(answerArray[1]);
@@ -112,9 +148,35 @@ $(document).ready(function() {
         $("#ans-4-text").text(answerArray[3]);
     }
 
+    
+    function checkWin() {
+        $(".answer").click(function() {
+            var answerUserClicked = $(this).html();
+            if (answerUserClicked == correctAnswer) {
+                wins ++
+                console.log("Your Wins: " +wins);
+                answerClicked = true;
+                gameTimer();
+            } else if (answerUserClicked !== correctAnswer) {
+                losses ++
+                console.log("your Losses: " + losses);
+                answerClicked = true;
+                gameTimer();
+            }
+        })
+    }
 
 
+    function quizOver() {
+        $(".game-container").toggleClass("hidden");
+        $(".quiz-over-container").toggleClass("hidden");
+        $("#restart-game").click(function() {
+            $(".quiz-over-container").toggleClass("hidden");
+            $(".title-screen").toggleClass("hidden");
+            gameStart();
+            })
+    }
 
-
+checkWin();
 
 });

@@ -9,8 +9,6 @@
     <title>Trivia SuperStars</title>
 </head>
 <body>
-    <p class="red">Hello World!</p>
-
     <div class="title-screen">
         <h1>Trivia Time!</h1>
         <h2> Pick your Category</h2>
@@ -38,12 +36,18 @@
         <div class="question-container"></div>
         <div class="answers-container">
             <ul>
-                <li id ="ans-1-text"><button id="ans-1">Answer 1</button></li>
-                <li id ="ans-2-text"><button id="ans-2">Answer 2</button></li>
-                <li id ="ans-3-text"><button>Answer 3</button></li>
-                <li id ="ans-4-text"><button>Answer 4</button></li>
+                <li><button class="answer" id ="ans-1-text">Answer 1</button></li>
+                <li><button class="answer" id ="ans-2-text">Answer 2</button></li>
+                <li><button class="answer" id ="ans-3-text">Answer 3</button></li>
+                <li><button class="answer" id ="ans-4-text">Answer 4</button></li>
             </ul>
         </div>
+    </div>
+
+    <div class="quiz-over-container hidden">
+        <h1> You've finished your quiz!!!</h1>
+        <h2> Let's see the scores...</h2>
+        <button id="restart-game">Play Again?</button>
     </div>
 
 <!-- Javascript and JQuery links -->
