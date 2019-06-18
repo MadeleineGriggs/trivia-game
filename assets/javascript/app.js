@@ -98,7 +98,7 @@ $(document).ready(function() {
     lastQuestion = false;
     var categoryIndex = 0;
 
-//Hides the how to play section unless the player clicks on the "How To play" button.
+        //Hides the how to play section unless the player clicks on the "How To play" button.
         $("#how-to-play").click(function() {
         $(".instructions").toggleClass("hidden");
         })
@@ -116,6 +116,8 @@ $(document).ready(function() {
         })
         
 
+        // When the user clicks to start the game, hide the title scree and make the game container visible, and start the trivia display function.
+        // If the user has not selected a category, do not start the game, and ask them to select a category to play.
         $("#start-game").click(function() {
             if (gameCategory !== "") {
             $(".title-screen").attr("class", "title-screen hidden");
@@ -138,12 +140,14 @@ $(document).ready(function() {
             if(lastQuestion === true){
                 clearInterval(timer);   
             }else if (answerClicked === true) {
+                $(".timer-container").text("You answered before the timer ran out!");
                 clearInterval(timer);
-                triviaDisplay();
+                showAnswer();
                 answerClicked = false;
             } else if (sec == -1) {
                 $(".timer-container").text("Time's Up!!!");
                 $(".show-correct-answer").html("You ran out of time! The answer is " + correctAnswer);
+                disableButtons();
                 clearInterval(timer);
                 showAnswer();
             }
@@ -151,15 +155,17 @@ $(document).ready(function() {
         }, 1000);
     }
 
+    // Actually, hides the answer after it has been displayed for 3 seconds, then starts up the next question.
     function showAnswer() {
-        var showTimeout = setTimeout(function() {
+       setTimeout(function() {
             $(".show-correct-answer").empty();
+            enableButtons();
             triviaDisplay();
         }, 3000);
     }
 
     // shuffles all the answers to each question in a random order, so the player can't guess the correct answer by the position of the answers.
-
+    // Fisher-Yates shuffle.
     function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -167,6 +173,7 @@ $(document).ready(function() {
         }
         return a;
     }
+
 
     function triviaDisplay() {
         gameTimer();
@@ -212,34 +219,45 @@ $(document).ready(function() {
         $("#ans-4-text").text(answerArray[3]);
     }
 
+    function disableButtons() {
+        $("#ans-1-text").attr('disabled','disabled');
+        $("#ans-2-text").attr('disabled','disabled');
+        $("#ans-3-text").attr('disabled','disabled');
+        $("#ans-4-text").attr('disabled','disabled');
+    }
+
+    function enableButtons() {
+        $("#ans-1-text").removeAttr('disabled');
+        $("#ans-2-text").removeAttr('disabled');
+        $("#ans-3-text").removeAttr('disabled');
+        $("#ans-4-text").removeAttr('disabled')
+    }
     
-    
+    // If the user clicks on any answer, check if it is the correct answer. If it is, add to the wins counter, and show that the user got the question correct.
+    // If the user selected the wrong answer, add to the losses counter and show the correct answer.
         $(".answer").click(function() {
             var answerUserClicked = $(this).html();
             if (answerUserClicked == correctAnswer) {
                 wins ++
                 console.log("Your Wins: " +wins);
-                
                 $(".show-correct-answer").html("You got it right! The answer is " + correctAnswer);
-                setTimeout(function() {
-                    $(".show-correct-answer").html("");
-                    answerClicked = true;
-                    gameTimer();
-                }, 5000);
-                
+                answerClicked = true;
+                disableButtons();
             } else if (answerUserClicked !== correctAnswer) {
                 losses ++
                 console.log("your Losses: " + losses);
-                
                 $(".show-correct-answer").html("You got it wrong! The answer is " + correctAnswer);
-                setTimeout(function() {
-                    $(".show-correct-answer").html("");
-                    answerClicked = true;
-                    gameTimer();
-                }, 5000);
-
+                answerClicked = true;
+                disableButtons();
             }
         })
+    
+
+    // When the quiz reaches the end, hide the game container and make a quiz over container visible, that displays the score for the quiz the user just did.
+    function quizOver() {
+        $(".game-container").toggleClass("hidden");
+        $(".quiz-over-container").toggleClass("hidden");
+    }
     
 
     $("#restart-game").click(function() {
@@ -248,10 +266,6 @@ $(document).ready(function() {
         $(".title-screen").attr("class", "title-screen");
         })
 
-    function quizOver() {
-        $(".game-container").toggleClass("hidden");
-        $(".quiz-over-container").toggleClass("hidden");
-    }
 
     function clearout() {
         gameCategory = "";
