@@ -257,6 +257,8 @@ $(document).ready(function() {
     function quizOver() {
         $(".game-container").toggleClass("hidden");
         $(".quiz-over-container").toggleClass("hidden");
+        $("#correct-answers").text("You got " + wins + " answers right.");
+        $("#wrong-answers").text("You got " + losses + " wrong answers.")
     }
     
 
