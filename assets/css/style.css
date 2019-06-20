@@ -18,7 +18,7 @@ body {
 
 
 h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .title-font {
@@ -34,6 +34,57 @@ h3 {
 
 .body-font {
     font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.category-container {
+    font-family: 'Quattrocento', serif;
+    font-size: 2rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.timer-container {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.quiz-over-container h1 {
+    font-family: 'Quattrocento', serif;
+    font-size: 2rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+
+
+.quiz-over-container h2 {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.quiz-over-container p {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    line-height: 1.5rem;
+}
+
+.question-container {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.show-correct-answer {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.25rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
 }
 
 #pick-category {
@@ -73,6 +124,12 @@ h3 {
     font-size: 1.5rem;
 }
 
+#alert {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    color: var(--accent-color);
+}
+
 .quiz-over-container {
     font-size: 1rem;
     background-color: var(--light-white);
@@ -82,6 +139,7 @@ h3 {
     padding: 2rem;
     text-align: center;
 }
+
 .hidden {
     display: none;
     height: 0;
@@ -108,4 +166,93 @@ a {
     width: 150px;
     border: 0px solid black;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.how-play-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.instruction-list {
+    line-height: 1.5rem;
+}
+
+.answer {
+    font-family: 'Quattrocento', serif;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    background: rgb(48,232,189);
+    border: 0px solid white;
+    border-radius: 5px;
+    color: var(--mid-gray);
+    padding: 0.75rem 2rem;
+}
+
+#category-1 {
+    position: relative;
+    text-align: center;
+}
+
+#category-2 {
+    position: relative;
+    text-align: center;
+}
+
+#category-3 {
+    position: relative;
+    text-align: center;
+}
+
+.category-text {
+    font-family: 'Quattrocento', serif;
+    font-size: 1.5rem;
+    color: var(--light-white);
+    text-shadow: -1px -1px 1px var(--mid-gray), 1px -1px 1px var(--mid-gray), -1px 1px 1px var(--mid-gray), 1px 1px 1px var(--mid-gray);
+    position: absolute;
+    top: -390%;
+    left: 49%;
+    transform: translate(-50%, 10%);
+}
+
+#restart-game {
+    background-color: var(--accent-color);
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+    margin-top: 2.5rem;
+    color: var(--light-white);
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .title-font {
+        font-size: 3rem;
+    }
+
+    .category-image {
+        margin-bottom: 1rem;
+    }
+
+    .category-text {
+        top: -450%;
+    }
+
+}
+
+@media only screen and (max-width: 602px) {
+    .title-font {
+        font-size: 2.25rem;
+    }
+
+    #start-game {
+        margin-bottom: 2rem;
+        margin-right: 0rem;
+    }
+
+    #how-to-play {
+        margin-bottom: 1rem;
+    }
+
 }

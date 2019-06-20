@@ -13,31 +13,40 @@
     <div class="title-screen">
         <p id="user-custom"></p>
         <h3 class="subtitles-font">Welcome to...</h3>
-        <h2 class="title-font">Trivia SuperStars!</h2>
+        <h1 class="title-font">Trivia SuperStars!</h1>
         <h2 class="body-font" id="pick-category"> Pick your Category:</h2>
         
         <a href="#" id="category-1">
-                <img class="category-image" src="assets/images/yellowFlowers.jpg"/>
+                <img class="category-image" src="assets/images/coins.jpeg"/>
+                <p class="category-text">Currency</p>
             </a>
         <a href="#" id="category-2">
                 <img class="category-image" src="assets/images/catMeow.jpg"/>
+                <p class="category-text">Animals</p>
             </a>
         <a href="#" id="category-3">
-                <img class="category-image" src="assets/images/cellphone.jpg"/>
+                <img class="category-image" src="assets/images/galaxy.jpg"/>
+                <p class="category-text">Space</p>
             </a>
         <br>
         <p class="body-font" id="alert"> </p>
         <button class="subtitle-font" id="start-game">Start Game!</button>
         <button class="subtitle-font" id="how-to-play">How to Play</button>
     <div class="instructions hidden">
-        <p>Here are the instructions to play the game</p>
-        <p> instructions etc. here.</p>
+        <h2 class="subtitle-font how-play-text">How to Play</h2>
+        <ul class="body-font instruction-list">
+            <li>This is a fast paced trivia game!</li>
+            <li>Pick which category you would like to play.</li>
+            <li>You'll have 15 seconds for each question in the category</li>
+            <li>Each question has 4 multiple choice answers.</li>
+            <li>Make sure you answer the question before the time is up!</li>
+        </ul>
     </div>
 </div>
-
+<!-- The main quiz game container -->
     <div class="game-container hidden">
-        <div class="timer-container">Let's Start!</div>
         <div class="category-container">Your Category is: </div>
+        <div class="timer-container">Let's Start!</div>
         <div class="question-container"></div>
         <div class="show-correct-answer"></div>
         <div class="answers-container">
@@ -50,8 +59,9 @@
         </div>
     </div>
 
+    <!-- The game over container. for when the quiz is finished. -->
     <div class="quiz-over-container hidden">
-        <h1> You've finished your quiz!!!</h1>
+        <h1> You've finished your quiz!</h1>
         <h2> Let's see the scores...</h2>
         <p id="correct-answers"></p>
         <p id="wrong-answers"></p>

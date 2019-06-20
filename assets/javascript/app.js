@@ -61,24 +61,65 @@ var TriviaCategories = [
         }
     }
 ,
-    {"category": "Cats",
+    {"category": "Animals",
         "questions": {
             "question1": {
-                "question": "How many legs do cats walk on?",
+                "question": "Which bird has eyes that are larger than its brain?",
                 "answers": {
-                    "wrongAnswer1": "Cats walk on 16 legs",
-                    "wrongAnswer2": "Cats walk on 3 legs",
-                    "wrongAnswer3": "Cats walk on 12 legs",
-                    "correctAnswer": "Cats walk on 4 legs, duh."
+                    "wrongAnswer1": "Pigeon",
+                    "wrongAnswer2": "Toucan",
+                    "wrongAnswer3": "Parrot",
+                    "correctAnswer": "Ostrich"
                 }
             },
             "question2": {
-                "question": "How many heads to cats have?",
+                "question": "What is the only snake in the world that builds a nest for its eggs?",
                 "answers": {
-                    "wrongAnswer1": "Cats have 16 heads",
-                    "wrongAnswer2": "Cats have 2 heads",
-                    "wrongAnswer3": "Cats have 4 heads",
-                    "correctAnswer": "Cats have 1 head, duh."
+                    "wrongAnswer1": "Grass Snake",
+                    "wrongAnswer2": "Black Mamba",
+                    "wrongAnswer3": "Jumping Pitviper",
+                    "correctAnswer": "King Cobra"
+                }
+            },
+            "question3": {
+                "question": "What is the only mammal born with horns?",
+                "answers": {
+                    "wrongAnswer1": "Buffalo",
+                    "wrongAnswer2": "Goat",
+                    "wrongAnswer3": "Platypus",
+                    "correctAnswer": "Giraffe"
+                }
+            },
+            "question4": {
+                "question": "What is the largest rodent found in North America?",
+                "answers": {
+                    "wrongAnswer1": "Hamster",
+                    "wrongAnswer2": "Capybara",
+                    "wrongAnswer3": "Porcupine",
+                    "correctAnswer": "Beaver"
+                }
+            }
+        }
+    }
+,
+    {"category": "Space",
+        "questions": {
+            "question1": {
+                "question": "Ganymede, the largest moon in our solar system, belongs to which planet?",
+                "answers": {
+                    "wrongAnswer1": "Earth",
+                    "wrongAnswer2": "Venus",
+                    "wrongAnswer3": "Saturn",
+                    "correctAnswer": "Jupiter"
+                }
+            },
+            "question2": {
+                "question": "What is the most common type of star found in the Milky Way?",
+                "answers": {
+                    "wrongAnswer1": "Neutron",
+                    "wrongAnswer2": "Yellow Dwarf Star",
+                    "wrongAnswer3": "Blue Giant",
+                    "correctAnswer": "Red Dwarf Star"
                 }
             }
         }
@@ -110,38 +151,38 @@ $(document).ready(function() {
     
     // $("#user-custom").text("Welcome back, " + displayName);
     
-        //Hides the how to play section unless the player clicks on the "How To play" button.
-        $("#how-to-play").click(function() {
-        $(".instructions").toggleClass("hidden");
-        })
+    //Hides the how to play section unless the player clicks on the "How To play" button.
+    $("#how-to-play").click(function() {
+    $(".instructions").toggleClass("hidden");
+    })
 
-        // When the player clicks on a category, set the gameCategory.
-        $("#category-1").click(function() {
-            gameCategory = "Currency";
-        })
-        $("#category-2").click(function() {
-            gameCategory = "cats";
-        })
-        $("#category-3").click(function() {
-            gameCategory = "other";
+    // When the player clicks on a category, set the gameCategory.
+    $("#category-1").click(function() {
+        gameCategory = "Currency";
+    })
+    $("#category-2").click(function() {
+        gameCategory = "Animals";
+    })
+    $("#category-3").click(function() {
+        gameCategory = "Space";
 
-        })
+    })
         
 
-        // When the user clicks to start the game, hide the title scree and make the game container visible, and start the trivia display function.
-        // If the user has not selected a category, do not start the game, and ask them to select a category to play.
-        $("#start-game").click(function() {
-            if (gameCategory !== "") {
-            $(".title-screen").attr("class", "title-screen hidden");
-            $(".game-container").toggleClass("hidden");
-            triviaDisplay();
-            }   else if (gameCategory === "") {
-            $("#alert").html("You need to pick a category to begin.");
-            setTimeout(function() {
-                $("#alert").html("");
-            }, 5000);
-            }
-        });
+    // When the user clicks to start the game, hide the title scree and make the game container visible, and start the trivia display function.
+    // If the user has not selected a category, do not start the game, and ask them to select a category to play.
+    $("#start-game").click(function() {
+        if (gameCategory !== "") {
+        $(".title-screen").attr("class", "title-screen hidden");
+        $(".game-container").toggleClass("hidden");
+        triviaDisplay();
+        }   else if (gameCategory === "") {
+        $("#alert").html("You need to pick a category to begin.");
+        setTimeout(function() {
+            $("#alert").html("");
+        }, 5000);
+        }
+    });
 
     // The timer for each question in the quiz. If the user clicks an answer, it pauses the time and shows the correct answer.
     // If the user runs out of time before selecting and answer, add to the losses counter and shows the correct answer.
@@ -189,26 +230,25 @@ $(document).ready(function() {
         return a;
     }
 
-
+    // Starts the game timer. Sets the category based on which option the user picks. Gets the total number of questions in that category.
+    // As long as there are questions remaining in the quiz, continue populating the answers. When we reach the last question, run quiz over.
     function triviaDisplay() {
         gameTimer();
         categoryIndex = 0;
         if(gameCategory === "Currency") {
             categoryIndex = 0;
-        } else if (gameCategory === "cats") {
+        } else if (gameCategory === "Animals") {
             categoryIndex = 1;
-        } else if (gameCategory === "other") {
+        } else if (gameCategory === "Space") {
             categoryIndex = 2;
         }
         $(".category-container").html("Your Category is: " + gameCategory);
         
         let questionLength = Object.keys(TriviaCategories[categoryIndex]["questions"]).length;
-        console.log("question Length is: " + questionLength);
 
         if (questionIndex < questionLength) {    
             questionIndex ++;
             populateAnswers(categoryIndex);
-            console.log("question Index is:" + questionIndex);
         } else if (questionIndex == questionLength) {
             lastQuestion = true;
             quizOver();
@@ -252,23 +292,23 @@ $(document).ready(function() {
     
     // If the user clicks on any answer, check if it is the correct answer. If it is, add to the wins counter, and show that the user got the question correct.
     // If the user selected the wrong answer, add to the losses counter and show the correct answer.
-        $(".answer").click(function() {
-            var answerUserClicked = $(this).html();
-            if (answerUserClicked == correctAnswer) {
-                wins ++
-                console.log("Your Wins: " +wins);
-                $(".show-correct-answer").html("You got it right! The answer is " + correctAnswer);
-                answerClicked = true;
-                disableButtons();
-            } else if (answerUserClicked !== correctAnswer) {
-                losses ++
-                console.log("your Losses: " + losses);
-                $(".show-correct-answer").html("You got it wrong! The answer is " + correctAnswer);
-                answerClicked = true;
-                disableButtons();
-            }
-        })
-    
+    $(".answer").click(function() {
+        var answerUserClicked = $(this).html();
+        if (answerUserClicked == correctAnswer) {
+            wins ++
+            console.log("Your Wins: " +wins);
+            $(".show-correct-answer").html("You got it right! The answer is " + correctAnswer);
+            answerClicked = true;
+            disableButtons();
+        } else if (answerUserClicked !== correctAnswer) {
+            losses ++
+            console.log("your Losses: " + losses);
+            $(".show-correct-answer").html("You got it wrong! The answer is " + correctAnswer);
+            answerClicked = true;
+            disableButtons();
+        }
+    })
+
 
     // When the quiz reaches the end, hide the game container and make a quiz over container visible, that displays the score for the quiz the user just did.
     function quizOver() {
