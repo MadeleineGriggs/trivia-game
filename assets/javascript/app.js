@@ -124,6 +124,31 @@ var TriviaCategories = [
             }
         }
     }
+    
+    // If you want to make an additional quiz, quiz questions and answers follow the format below:
+    // ,
+    // {"category": "PLACEHOLDER",
+    //     "questions": {
+    //         "question1": {
+    //             "question": "THIS IS QUESTION?",
+    //             "answers": {
+    //                 "wrongAnswer1": "ANSWER",
+    //                 "wrongAnswer2": "ANSWER",
+    //                 "wrongAnswer3": "ANSWER",
+    //                 "correctAnswer": "RIGHT ANSWER"
+    //             }
+    //         },
+    //         "question2": {
+    //             "question": "THIS IS QUESTION?",
+    //             "answers": {
+    //                 "wrongAnswer1": "ANSWER",
+    //                 "wrongAnswer2": "ANSWER",
+    //                 "wrongAnswer3": "ANSWER",
+    //                 "correctAnswer": "RIGHT ANSWER"
+    //             }
+    //         }
+    //     }
+    // }
 ]
 
 
@@ -296,13 +321,11 @@ $(document).ready(function() {
         var answerUserClicked = $(this).html();
         if (answerUserClicked == correctAnswer) {
             wins ++
-            console.log("Your Wins: " +wins);
             $(".show-correct-answer").html("You got it right! The answer is " + correctAnswer);
             answerClicked = true;
             disableButtons();
         } else if (answerUserClicked !== correctAnswer) {
             losses ++
-            console.log("your Losses: " + losses);
             $(".show-correct-answer").html("You got it wrong! The answer is " + correctAnswer);
             answerClicked = true;
             disableButtons();

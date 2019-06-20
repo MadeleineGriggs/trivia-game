@@ -3,7 +3,6 @@
     --base-color: #30e8bd;
     --accent-color: #FB3453;
     --mid-gray: #5c5e5d;
-    --light-gray: #cacecc;
     --light-white: #f9fcfb;
 }
 
@@ -16,18 +15,6 @@ body {
     background-attachment: fixed;
 }
 
-
-h3 {
-    font-size: 1.5rem;
-}
-
-.title-font {
-    font-family: 'Monoton', cursive;
-    font-size: 4rem;
-    color: var(--accent-color);
-    margin-top: 0.5rem;
-}
-
 .subtitles-font {
     font-family: 'Quattrocento', serif;
 }
@@ -36,62 +23,17 @@ h3 {
     font-family: 'Quattrocento Sans', sans-serif;
 }
 
-.category-container {
-    font-family: 'Quattrocento', serif;
-    font-size: 2rem;
-    color: var(--mid-gray);
-    margin-bottom: 1rem;
+.hidden {
+    display: none;
+    height: 0;
+    overflow: hidden;
 }
 
-.timer-container {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
+a {
+    text-decoration: none;
 }
 
-.quiz-over-container h1 {
-    font-family: 'Quattrocento', serif;
-    font-size: 2rem;
-    color: var(--mid-gray);
-    margin-bottom: 1rem;
-}
-
-
-
-.quiz-over-container h2 {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1.5rem;
-    color: var(--mid-gray);
-    margin-bottom: 1rem;
-}
-
-.quiz-over-container p {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    line-height: 1.5rem;
-}
-
-.question-container {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1.5rem;
-    color: var(--mid-gray);
-    margin-bottom: 1rem;
-}
-
-.show-correct-answer {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1.25rem;
-    color: var(--mid-gray);
-    margin-bottom: 1rem;
-}
-
-#pick-category {
-    margin-top: 2.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
+/* Styling for the title screen container*/
 
 .title-screen {
     font-size: 1rem;
@@ -130,40 +72,27 @@ h3 {
     color: var(--accent-color);
 }
 
-.quiz-over-container {
-    font-size: 1rem;
-    background-color: var(--light-white);
-    border: 2px solid var(--mid-gray);
-    border-radius: 7px;
-    margin: 2rem 5rem;
-    padding: 2rem;
-    text-align: center;
+h3 {
+    font-size: 1.5rem;
 }
 
-.hidden {
-    display: none;
-    height: 0;
-    overflow: hidden;
+.title-font {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 6rem;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
 }
 
-.game-container {
-    font-size: 1rem;
-    background-color: var(--light-white);
-    border: 2px solid var(--mid-gray);
-    border-radius: 7px;
-    margin: 2rem 5rem;
-    padding: 2rem;
-    text-align: center;
-}
-
-a {
-    text-decoration: none;
+#pick-category {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .category-image {
     padding: 0 2rem;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     border: 0px solid black;
     border-radius: 50%;
     object-fit: cover;
@@ -176,17 +105,6 @@ a {
 
 .instruction-list {
     line-height: 1.5rem;
-}
-
-.answer {
-    font-family: 'Quattrocento', serif;
-    font-size: 1.25rem;
-    margin-top: 1rem;
-    background: rgb(48,232,189);
-    border: 0px solid white;
-    border-radius: 5px;
-    color: var(--mid-gray);
-    padding: 0.75rem 2rem;
 }
 
 #category-1 {
@@ -206,13 +124,95 @@ a {
 
 .category-text {
     font-family: 'Quattrocento', serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--light-white);
-    text-shadow: -1px -1px 1px var(--mid-gray), 1px -1px 1px var(--mid-gray), -1px 1px 1px var(--mid-gray), 1px 1px 1px var(--mid-gray);
+    text-shadow: -1px -1px 2px var(--mid-gray), 1px -1px 2px var(--mid-gray), -1px 1px 2px var(--mid-gray), 1px 1px 2px var(--mid-gray);
     position: absolute;
-    top: -390%;
+    top: -550%;
     left: 49%;
     transform: translate(-50%, 10%);
+}
+
+/* Styling for the game container */
+.category-container {
+    font-family: 'Quattrocento', serif;
+    font-size: 2rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.timer-container {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.question-container {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.show-correct-answer {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.25rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.game-container {
+    font-size: 1rem;
+    background-color: var(--light-white);
+    border: 2px solid var(--mid-gray);
+    border-radius: 7px;
+    margin: 2rem 5rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.answer {
+    font-family: 'Quattrocento', serif;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    background: rgb(48,232,189);
+    border: 0px solid white;
+    border-radius: 5px;
+    color: var(--mid-gray);
+    padding: 0.75rem 2rem;
+}
+
+/* Styling for the quiz over container */
+.quiz-over-container h1 {
+    font-family: 'Quattrocento', serif;
+    font-size: 2rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.quiz-over-container h2 {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--mid-gray);
+    margin-bottom: 1rem;
+}
+
+.quiz-over-container p {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    line-height: 1.5rem;
+}
+
+.quiz-over-container {
+    font-size: 1rem;
+    background-color: var(--light-white);
+    border: 2px solid var(--mid-gray);
+    border-radius: 7px;
+    margin: 2rem 5rem;
+    padding: 2rem;
+    text-align: center;
 }
 
 #restart-game {
@@ -226,16 +226,20 @@ a {
     font-size: 1.5rem;
 }
 
+/* MEDIA QUERIES */
 @media only screen and (max-width: 768px) {
     .title-font {
-        font-size: 3rem;
+        font-size: 4.5rem;
     }
 
     .category-image {
+        width: 150px;
+        height: 150px;
         margin-bottom: 1rem;
     }
 
     .category-text {
+        font-size: 1.5rem;
         top: -450%;
     }
 
@@ -243,7 +247,7 @@ a {
 
 @media only screen and (max-width: 602px) {
     .title-font {
-        font-size: 2.25rem;
+        font-size: 3rem;
     }
 
     #start-game {
