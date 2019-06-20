@@ -21,8 +21,9 @@ You can play the game here:
 - ![#f9fcfb](https://placehold.it/15/f9fcfb/000000?text=+) `#f9fcfb - Light White: White used for main container backgrounds, font on red buttons.`
 
 ### Fonts Used
-- Font Family: 'Georgia', Times, Times New Roman, serif. Used for header text.
-- Font Family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif. Used for body text and nav items.
+- Font Family: 'Quattrocento Sans', sans-serif. Used for body text.
+- Font Family: 'Permanent Marker', cursive. Used for the "Trivia SuperStars!" title on the title screen.
+- Font Family: 'Quattrocento', serif. Used for most titles except for the main title on the title screen.
 
 ### Screenshots
 
