@@ -8,7 +8,7 @@ Madeleine Griggs.
 this is trivia game, where you select a category to play, and have several timed questions to answer. When the user answers the question, the timer stops, and the correct answer is displayed, then it continues to the next question. At the end of the quiz the game displays how many questions the user got wrong and right, then they have the option to restart and play another category. It was made as part of a project for the UofT coding bootcamp. The purpose of this project was to gain an understanding of how to use function timers, and continuing to learn more jQuery.
 This project was written using: HTML5, CSS3, jQuery 3.4.1, and Javascript.
 You can play the game here:
-[Trivia SuperStars](https://typicu.github.io/trivia-game/)
+[Trivia SuperStars](https://madeleinegriggs.github.io/trivia-game/)
 
 
 
